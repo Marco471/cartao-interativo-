@@ -7,7 +7,7 @@
   <!-- Responsividade -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PWA (somente manifest, sem service worker) -->
+  <!-- PWA (sem service worker) -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="img/icon-192.png">
   <meta name="theme-color" content="#ffffff">
@@ -128,23 +128,39 @@
       💬 Falar no WhatsApp
     </a>
 
-    <!-- INSTAGRAM (FORÇA ABRIR O APP) -->
+    <!-- INSTAGRAM (UNIVERSAL COM FALLBACK) -->
     <a
-      href="intent://instagram.com/studiodanielaalmeida/#Intent;package=com.instagram.android;scheme=https;end"
-      class="button instagram">
+      href="https://www.instagram.com/studiodanielaalmeida"
+      class="button instagram"
+      onclick="abrirInstagram(event)">
       📸 Ver Instagram
     </a>
 
-    <!-- FALLBACK -->
     <small>
-      Se não abrir, toque nos 3 pontinhos do celular e escolha
-      <br>
-      <a href="https://www.instagram.com/studiodanielaalmeida" target="_blank">
-        Abrir no navegador
-      </a>
+      Se não abrir no app, o perfil será aberto no navegador.
     </small>
 
   </div>
+
+  <script>
+    function abrirInstagram(e) {
+      e.preventDefault();
+
+      const appLink =
+        "intent://instagram.com/studiodanielaalmeida/#Intent;package=com.instagram.android;scheme=https;end";
+
+      const webLink =
+        "https://www.instagram.com/studiodanielaalmeida";
+
+      // tenta abrir o app (Android)
+      window.location.href = appLink;
+
+      // fallback universal (iPhone, navegador interno, PC)
+      setTimeout(() => {
+        window.location.href = webLink;
+      }, 1200);
+    }
+  </script>
 
 </body>
 </html>
