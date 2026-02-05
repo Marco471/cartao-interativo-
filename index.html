@@ -7,7 +7,7 @@
   <!-- Responsividade -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PWA (sem service worker) -->
+  <!-- PWA (sem service worker para evitar cache/bloqueio) -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="img/icon-192.png">
   <meta name="theme-color" content="#ffffff">
@@ -128,7 +128,7 @@
       💬 Falar no WhatsApp
     </a>
 
-    <!-- INSTAGRAM (UNIVERSAL COM FALLBACK) -->
+    <!-- INSTAGRAM (COM FALLBACK UNIVERSAL) -->
     <a
       href="https://www.instagram.com/studiodanielaalmeida"
       class="button instagram"
@@ -137,7 +137,7 @@
     </a>
 
     <small>
-      Se não abrir no app, o perfil será aberto no navegador.
+      Se o app não abrir, o perfil será aberto no navegador.
     </small>
 
   </div>
@@ -152,11 +152,11 @@
       const webLink =
         "https://www.instagram.com/studiodanielaalmeida";
 
-      // tenta abrir o app (Android)
+      // Tenta abrir o app (Android)
       window.location.href = appLink;
 
-      // fallback universal (iPhone, navegador interno, PC)
-      setTimeout(() => {
+      // Fallback: abre no navegador (iPhone, Instagram interno, PC)
+      setTimeout(function () {
         window.location.href = webLink;
       }, 1200);
     }
