@@ -7,7 +7,7 @@
   <!-- Responsividade -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PWA -->
+  <!-- PWA (somente manifest, sem service worker) -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="img/icon-192.png">
   <meta name="theme-color" content="#ffffff">
@@ -60,7 +60,7 @@
       line-height: 1.5;
     }
 
-    a {
+    a.button {
       display: block;
       margin: 12px 0;
       padding: 14px;
@@ -71,7 +71,7 @@
       transition: 0.3s;
     }
 
-    a:hover {
+    a.button:hover {
       opacity: 0.9;
     }
 
@@ -88,6 +88,18 @@
         #515BD4
       );
     }
+
+    small {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    small a {
+      color: #515BD4;
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -103,25 +115,34 @@
     <h1>Studio Daniela Almeida</h1>
 
     <p>
-      Há 9 anos transformando cabelos em obra de arte ✨️<br>
+      Há 9 anos transformando cabelos em obra de arte ✨<br>
       🏅 Especialista em lisos espelhados | Loiros<br>
       💄 Maquiagem Beauty • Natural
     </p>
 
-    <!-- BOTÕES -->
+    <!-- WHATSAPP -->
     <a
       href="https://wa.me/5511946358101"
       target="_blank"
-      class="whatsapp">
+      class="button whatsapp">
       💬 Falar no WhatsApp
     </a>
 
+    <!-- INSTAGRAM (FORÇA ABRIR O APP) -->
     <a
-      href="https://www.instagram.com/studiodanielaalmeida"
-      target="_blank"
-      class="instagram">
+      href="intent://instagram.com/studiodanielaalmeida/#Intent;package=com.instagram.android;scheme=https;end"
+      class="button instagram">
       📸 Ver Instagram
     </a>
+
+    <!-- FALLBACK -->
+    <small>
+      Se não abrir, toque nos 3 pontinhos do celular e escolha
+      <br>
+      <a href="https://www.instagram.com/studiodanielaalmeida" target="_blank">
+        Abrir no navegador
+      </a>
+    </small>
 
   </div>
 
